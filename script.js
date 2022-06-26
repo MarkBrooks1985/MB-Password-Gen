@@ -10,33 +10,45 @@ let lowercase = confirm("do you want lowercase characters?");
 let uppercase = confirm("do you want uppercase characters?");
 let specialCharacters = confirm("do you want Special characters?");
 let numbers = confirm("do you want numeric characters?");
+let password = ``;
 
-var password = "lowercase" + "uppercase" + "specialCharacters" + "numbers";
+let pass = [
+  {'type': 'lower', 'active': lowercase},
+  {'type': 'upper', 'active': uppercase},
+  {'type': 'special', 'active': specialCharacters},
+  {'type': 'num', 'active': numbers}
 
-for (var i = 0; i < 10 ; i++) {
-  isNumberIncluded();{
-     password = password + numeric;
-   }
-  if(isUpperCaseIncluded){
-    password = password + uppercase;
+];
+
+let passLevel = pass.filter(level => level.active === true);
+
+for (var i = 0; i < length ; i++) {
+  let level = Math.floor(Math.random() * passLevel.length);
+  switch(passLevel[level].type) {
+    case 'lower':
+      password += getLowercase();
+      break;
+    case 'upper':
+        password += getUppercase();
+        break;
+    case 'special':
+        password += getSpecialCharacters();
+        break;
+    case 'num':
+        password += getNumbers();
+        break;
+      default:
+        break;
+    }
+  }   if (password = lowercase === false && uppercase === false && specialCharacters === false && numbers === false) {
+    (alert + stop.function);
   }
-  if(isLowercaseIncluded){
-    password = lowercase;
-  }
-  if(isSpecialIncluded){
-    password = password + specialCharacters;
-  }
-}
 
 }
 
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
-  console.log(randomgen);
-  console.log(generatePassword);
- 
 
   passwordText.value = password;
 
@@ -162,5 +174,3 @@ function getUppercase() {
   return randomgen;
 
 }
-
-console.log(password);
