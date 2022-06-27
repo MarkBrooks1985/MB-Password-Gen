@@ -1,22 +1,25 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
+// Below is the code for generate the random password as well as various bits and pieces to generate different aspects such as prompts and confirms
 
 function generatePassword() {
 
-let length = prompt("Please choose a password length between 8 and 128 characters?")
-let lowercase = confirm("do you want lowercase characters?");
-let uppercase = confirm("do you want uppercase characters?");
-let specialCharacters = confirm("do you want Special characters?");
-let numbers = confirm("do you want numeric characters?");
+let length = parseInt(prompt("Please choose a password length between 8 and 128 characters?"))
+if (length < 8 || length > 128 || typeof length !== 'number') {
+  return generatePassword();
+}
+let lowerPrompt = confirm("do you want lowercase characters?");
+let upperPrompt = confirm("do you want uppercase characters?");
+let specialPrompt = confirm("do you want Special characters?");
+let numbersPrompt = confirm("do you want numeric characters?");
 let password = ``;
 
 let pass = [
-  {'type': 'lower', 'active': lowercase},
-  {'type': 'upper', 'active': uppercase},
-  {'type': 'special', 'active': specialCharacters},
-  {'type': 'num', 'active': numbers}
+  {'type': 'lower', 'active': lowerPrompt},
+  {'type': 'upper', 'active': upperPrompt},
+  {'type': 'special', 'active': specialPrompt},
+  {'type': 'num', 'active': numbersPrompt}
 
 ];
 
@@ -40,10 +43,10 @@ for (var i = 0; i < length ; i++) {
       default:
         break;
     }
-  }   if (password = lowercase === false && uppercase === false && specialCharacters === false && numbers === false) {
-    (alert + stop.function);
+  }   if (lowerPrompt === false && upperPrompt === false && specialPrompt === false && numbersPrompt === false) {
+    return generatePassword();
   }
-
+  return password;
 }
 
 function writePassword() {
@@ -54,10 +57,12 @@ function writePassword() {
 
 }
 
-// Add event listener to generate button
+// here is the button that is used to activated the above code.
+
 generateBtn.addEventListener("click", writePassword);
 
-// Array of special characters to be included in password
+// Below are the arrays for the different parts of password gen characters.
+
 function getSpecialCharacters() {
   var specialcharacters = [
     '@',
@@ -92,7 +97,6 @@ function getSpecialCharacters() {
 
 function getNumbers() {
 
-  // Array of numeric characters to be included in password
 var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
 var randomindex = Math.floor(Math.random() * numbers.length);
